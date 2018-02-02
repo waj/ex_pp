@@ -17,7 +17,7 @@ defmodule PP do
   """
   defmacro pp(expr, ansi_format \\ :reset) do
     quote bind_quoted: [expr: expr, ansi_format: ansi_format, expr_s: Macro.to_string(expr)] do
-      [ansi_format, "#{expr_s} # => #{expr}"]
+      [ansi_format, "#{expr_s} # => #{inspect expr}"]
       |> IO.ANSI.format()
       |> IO.puts()
     end
